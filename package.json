@@ -1,0 +1,32 @@
+{
+  "name": "use-is-mounted",
+  "version": "1.0.0",
+  "description": "Hook that returns true if a component is mounted and false when it's not longer the case",
+  "main": "index.cjs.js",
+  "module": "index.es.js",
+  "types": "index.d.ts",
+  "author": "Derk-Jan Karrenbeld <derk-jan+github@karrenbeld.info>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "build": "yarn build:module && yarn build:main && yarn build:dts",
+    "build:module": "yarn tsc --module es2015 --outDir build && move build\\useIsMounted.js .\\index.es.js",
+    "build:main": "yarn tsc --module commonjs --outDir build && move build\\useIsMounted.js .\\index.cjs.js",
+    "build:dts": "yarn tsc --declaration --declarationMap --emitDeclarationOnly && move useIsMounted.d.ts index.d.ts && move useIsMounted.d.ts.map index.d.ts.map",
+    "prepublish": "yarn build"
+  },
+  "peerDependencies": {
+    "react": ">= 16.8"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.35",
+    "react": "~16.9.0",
+    "typescript": "^3.9.3"
+  },
+  "files": [
+    "index.cjs.js",
+    "index.es.js",
+    "index.d.ts",
+    "index.d.ts.map"
+  ]
+}
